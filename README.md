@@ -8,6 +8,8 @@ You must then build an ascending sequence of numbers going sideways or diagonall
 
 Levels are generated from 70 templates.
 
+GUI is made with Windows Forms.
+
 ### Inspired by
 
 [Number Knot](https://play.google.com/store/apps/details?id=com.codejuggler.numberknot&hl=sk)
