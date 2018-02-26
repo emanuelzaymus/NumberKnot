@@ -59,7 +59,7 @@ void NumberKnot_WithGUI::MyForm::LoadNewPuzzle()
 			System::Windows::Forms::Button^  b = (gcnew System::Windows::Forms::Button());
 			if (puzzle->Get(y, x) == 0)
 			{
-				b->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F, System::Drawing::FontStyle::Regular,
+				b->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.25F, System::Drawing::FontStyle::Regular,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 				b->Text = "";
 			}
@@ -67,6 +67,7 @@ void NumberKnot_WithGUI::MyForm::LoadNewPuzzle()
 				b->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold,
 					System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 				b->Text = IntToSysStr(puzzle->Get(y, x));
+				b->ForeColor = SystemColors::Control.MediumBlue;
 			}
 			else
 			{

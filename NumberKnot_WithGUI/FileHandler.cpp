@@ -11,27 +11,19 @@ using namespace std;
 /*Writes string in text param into file (file path = path param).*/
 void FileHandler::Write(const string & path, const string & text)
 {
-	//if (!(experimental::filesystem::exists(path)));
-	//{
-	//	printf("...neotvorene\n");
-	//	if (experimental::filesystem::create_directory(path))
-	//		printf("....vytvorene\n");
-	//}
-
 	ofstream outFile(path);
-	if (outFile.is_open())
-	{
-		outFile << text;
-		outFile.close();
-	}
-	else
-		printf("!!! File %s was not opened !!!\n", path);
+	outFile << text;
+	outFile.close();
 }
 
 /*Returns whole content of file (file path = path param).*/
 string FileHandler::Read(const string & path)
 {
 	ifstream inFile(path);
+	if (!inFile.is_open())
+	{
+		System::Windows::Forms::MessageBox::Show("Cannot read file.", "Problem");
+	}
 	string ret((istreambuf_iterator<char>(inFile)), istreambuf_iterator<char>());
 	inFile.close();
 
@@ -51,12 +43,14 @@ int FileHandler::NumberOfLines(const string & path)
 	int count = 0;
 	string line;
 
-	if (inFile.is_open()) {
-		while (!inFile.eof()) {
-			getline(inFile, line);
-			count++;
-		}
-		inFile.close();
+	if (!inFile.is_open())
+		System::Windows::Forms::MessageBox::Show("Cannot read file.", "Problem");
+
+	while (!inFile.eof()) {
+		getline(inFile, line);
+		count++;
 	}
+	inFile.close();
+
 	return count;
 }
